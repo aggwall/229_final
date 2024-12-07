@@ -1,0 +1,42 @@
+mode: train
+
+uce_dataset_path: /dfs/user/ayushag/diffusion/data/uce_data/coarse_uce_10000_per_dataset_33l_8ep.h5ad
+uce_dataset_name: coarse_uce_10000_per_dataset_33l_8ep
+pretrain_path: null
+
+model_title: replica_sept22_4h_3l_10k
+
+condition_type: uncond
+conditions: none
+cond_emb_type: none
+
+uce_dim: 1280
+time_dim: 32
+
+mlp_hidden_dim_multiple: 4
+num_mlp_hidden_layers: 3
+
+model_type: DiffusionDenoiser
+pred_type: pred_noise
+sieve: true
+use_bn: false
+save_model_bool: true
+immiscible: false
+
+epochs: 300
+batch_size: 16384
+learning_rate: 0.0003
+weight_decay: 0.00001
+
+ema_decay: 0.995
+ema_update_every: 10
+noise_schedule: linear
+
+num_diffusion_timesteps: 250
+beta_1: 0.0001
+beta_2: 0.02
+
+vae_model: none    # options: "separate", "joint", "none"
+vae_path: /dfs/user/ayushag/diffusion/saved_models/vae/33l_vae_beta=0.1_alpha=256/33l_vae_beta=0.1_alpha=256_ep=60_bs=2048_lr=0.001_wd=1e-05_epoch_59
+hidden_dim: 512
+latent_dim: 128
